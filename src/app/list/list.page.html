@@ -24,24 +24,24 @@
 
 <ion-content>
   <ion-list class="targets">
-    <ion-item-sliding *ngFor="let item of items" class="target">
+    <ion-item-sliding *ngFor="let target of targets" class="target">
       <ion-item>
         <ion-label>
-          <div class="text">{{ item.text }}</div>
-          <div class="deadline">{{ item.deadline }}</div>
+          <div class="text">{{ target.text }}</div>
+          <div class="deadline">{{ target.deadline }}</div>
         </ion-label>
 
         <div class="item-note points" slot="end">
-          {{ item.points }}
+          {{ target.points }}
         </div>
       </ion-item>
 
       <ion-item-options>
-        <ion-item-option color="primary">
+        <ion-item-option color="primary" (click)="markTargetAsChecked(target)">
           <ion-icon name="checkmark"></ion-icon>
         </ion-item-option>
 
-        <ion-item-option color="danger">
+        <ion-item-option color="danger" (click)="deleteTarget(target)">
           <ion-icon name="trash"></ion-icon>
         </ion-item-option>
       </ion-item-options>

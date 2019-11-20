@@ -7,11 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListPage implements OnInit {
   private selectedItem: any;
-  public items: Array<{ text: string; deadline: string; points: number }> = [];
+  public targets: Array<{ id: number; text: string; deadline: string; points: number }> = [];
 
   constructor() {
     for (let i = 1; i < 11; i++) {
-      this.items.push({
+      this.targets.push({
+        id: i,
         text: 'Description for item ' + i,
         deadline:  i + ' ' + i + ' 2020',
         points: Math.floor(Math.random() * 23)
@@ -21,6 +22,15 @@ export class ListPage implements OnInit {
 
   ngOnInit() {
   }
+
+  deleteTarget(target) {
+    const index = this.targets.indexOf(target);
+    this.targets.splice(index, 1);
+  }
+
+  markTargetAsChecked(target) {
+  }
+
   // add back when alpha.4 is out
   // navigate(item) {
   //   this.router.navigate(['/list', JSON.stringify(item)]);
