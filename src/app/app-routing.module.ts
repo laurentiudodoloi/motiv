@@ -14,6 +14,10 @@ const routes: Routes = [
   {
     path: 'targets',
     loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
+  },
+  {
+    path: 'target-modal',
+    loadChildren: () => import('./target-modal/target-modal.module').then( m => m.TargetModalPageModule)
   }
 ];
 
