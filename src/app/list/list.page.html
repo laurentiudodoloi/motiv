@@ -3,21 +3,49 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
+
     <ion-title>
-      List
+      Targets
     </ion-title>
+
+    <ion-buttons slot="end" padding-end>
+      <ion-button>Level 1 (20 pt)</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-toolbar class="subheader" color="tertiary">
+    <ion-buttons slot="end" padding-end>
+      <ion-button class="add-button">
+        <ion-icon name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item *ngFor="let item of items">
-      <ion-icon [name]="item.icon" slot="start"></ion-icon>
-      {{item.title}}
-      <div class="item-note" slot="end">
-        {{item.note}}
-      </div>
-    </ion-item>
+  <ion-list class="targets">
+    <ion-item-sliding *ngFor="let item of items" class="target">
+      <ion-item>
+        <ion-label>
+          <div class="text">{{ item.text }}</div>
+          <div class="deadline">{{ item.deadline }}</div>
+        </ion-label>
+
+        <div class="item-note points" slot="end">
+          {{ item.points }}
+        </div>
+      </ion-item>
+
+      <ion-item-options>
+        <ion-item-option color="primary">
+          <ion-icon name="checkmark"></ion-icon>
+        </ion-item-option>
+
+        <ion-item-option color="danger">
+          <ion-icon name="trash"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
   </ion-list>
   <!--
     <div *ngIf="selectedItem" padding>
