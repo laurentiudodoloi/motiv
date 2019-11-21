@@ -1,36 +1,45 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Target Modal</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>New target ? You are almost there !</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-list>
-    <ion-item>
-      <ion-label position="floating">Text</ion-label>
-      <ion-input></ion-input>
-    </ion-item>
+    <div style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+        <ion-list>
+            <ion-item>
+                <ion-label position="floating">Your target</ion-label>
+                <ion-input [(ngModel)]="target.text"></ion-input>
+            </ion-item>
 
-    <ion-item>
-      <ion-label position="floating">Importance</ion-label>
-      <ion-select>
-        <ion-select-option value="1">Not so important</ion-select-option>
-        <ion-select-option value="2">Good to have</ion-select-option>
-        <ion-select-option value="3">Important</ion-select-option>
-        <ion-select-option value="4">Very important</ion-select-option>
-        <ion-select-option value="5">Dream</ion-select-option>
-      </ion-select>
-    </ion-item>
+            <ion-item>
+                <ion-label position="floating">This is</ion-label>
+                <ion-select [(ngModel)]="target.priority">
+                    <ion-select-option value="1">Not so important</ion-select-option>
+                    <ion-select-option value="2">Good to have</ion-select-option>
+                    <ion-select-option value="3">Important</ion-select-option>
+                    <ion-select-option value="4">Very important</ion-select-option>
+                    <ion-select-option value="5">A dream</ion-select-option>
+                </ion-select>
+            </ion-item>
 
-    <ion-item>
-      <ion-label>Has deadline</ion-label>
-      <ion-checkbox slot="start"></ion-checkbox>
-    </ion-item>
+            <ion-item>
+                <ion-label>Has deadline</ion-label>
+                <ion-checkbox [(ngModel)]="target.hasDeadline" slot="start"></ion-checkbox>
+            </ion-item>
 
-    <ion-item>
-      <ion-label position="floating">Select deadline</ion-label>
-      <ion-datetime></ion-datetime>
-    </ion-item>
+            <ion-item *ngIf="target.hasDeadline">
+                <ion-label position="floating">Select deadline</ion-label>
+                <ion-datetime [(ngModel)]="target.deadline"></ion-datetime>
+            </ion-item>
+        </ion-list>
 
-  </ion-list>
+        <ion-button
+                color="success"
+                expand="block"
+                fill="outline"
+                (click)="save()"
+        >Save
+        </ion-button>
+    </div>
 </ion-content>

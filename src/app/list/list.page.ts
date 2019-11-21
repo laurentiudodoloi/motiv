@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { TargetModalPage } from '../target-modal/target-modal.page';
+import {TargetModalPage} from '../target-modal/target-modal.page';
+import {AuthProvider} from '../../_services/auth/auth';
 
 @Component({
   selector: 'app-list',
@@ -12,18 +13,26 @@ export class ListPage implements OnInit {
   private selectedItem: any;
   public targets: Array<{ id: number; text: string; deadline: string; points: number }> = [];
 
-  constructor(public modalController: ModalController) {
+  constructor(
+      public modalController: ModalController,
+      private authService: AuthProvider
+  ) {
     for (let i = 1; i < 11; i++) {
       this.targets.push({
         id: i,
         text: 'Description for item ' + i,
-        deadline:  i + ' ' + i + ' 2020',
+        deadline:  i + '/' + i + '/2020',
         points: Math.floor(Math.random() * 23)
       });
     }
   }
 
+  ionViewCanEnter() {
+    return this.authService.authenticated();
+  }
+
   ngOnInit() {
+    //
   }
 
   deleteTarget(target) {

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Storage} from '@ionic/storage';
-import {Config} from '../_config/Config';
-import {Route} from '../_routes/Route';
+import {Config} from '../../_config/Config';
+import {Route} from '../../_routes/Route';
 
 @Injectable({
   providedIn: 'root'
@@ -26,15 +26,15 @@ export class TargetService {
           return this.http
               .get(this.apiUrl + Route.targets, userId)
               .toPromise()
-              .then((r: any) => {
-                if (!r.success) {
+              .then((res: any) => {
+                if (!res.success) {
                   return false;
                 }
 
                 this.storage
-                    .set('targets', r.entities);
+                    .set('targets', res.entities);
 
-                return r.entities;
+                return res.entities;
               });
         });
   }
