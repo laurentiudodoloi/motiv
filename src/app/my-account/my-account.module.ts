@@ -15,6 +15,14 @@ import { MyAccountPage } from './my-account.page';
       {
         path: '',
         component: MyAccountPage
+      },
+      {
+        path: 'schedule',
+        component: MyAccountPage
+      },
+      {
+        path: '',
+        component: MyAccountPage
       }
     ])
   ],

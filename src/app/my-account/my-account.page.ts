@@ -15,7 +15,7 @@ export class MyAccountPage {
   ) {
     if (!this.authService.authenticated()) {
       console.log('Not authenticated.');
-      this.navCtrl.navigateRoot('login');
+      // this.navCtrl.navigateRoot('login');
     }
   }
 }
